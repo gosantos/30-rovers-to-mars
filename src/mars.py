@@ -43,6 +43,9 @@ class Rover:
     def move_forward(self):
         ''' Moves the Rover forward, given its current
             position and direction
+        
+        :raises: A RuntimeError in case of invalid direction value (no matches).
+        :raises: A RuntimeError if the move is invalid.
         '''
         print('({}, {}) - moving forward...'.format(self._position.x, 
                                                     self._position.y))
@@ -55,27 +58,24 @@ class Rover:
         # but we only create 1 object
         if self._position.direction == 'n':
             new_position = Position(self._position.x, self._position.y + 1, self._position.direction)
-            if Rover.isValidPosition(self._plateau, new_position):
-                self._position = new_position
-            return self
 
-        if self._position.direction == 's':
+        elif self._position.direction == 's':
             new_position = Position(self._position.x, self._position.y - 1, self._position.direction)
-            if Rover.isValidPosition(self._plateau, new_position):
-                self._position = new_position
-            return self
 
-        if self._position.direction == 'e':
-            new_position = Position(self._position.x + 1, self._position.y, self._position.direction)
-            if Rover.isValidPosition(self._plateau, new_position):
-                self._position = new_position
-            return self
+        elif self._position.direction == 'e':
+            new_position = Position(self._position.x + 1, self._position.y, self._position.direction)   
 
-        if self._position.direction == 'w':
+        elif self._position.direction == 'w':
             new_position = Position(self._position.x - 1, self._position.y, self._position.direction)
-            if Rover.isValidPosition(self._plateau, new_position):
-                self._position = new_position
+        
+        if Rover.isValidPosition(self._plateau, new_position):
+            self._position = new_position
             return self
+        else:
+            raise RuntimeError('Invalid move:', command)
+
+        # raise unexpected error in case we get no matches at all
+        raise RuntimeError('Unexpected error!')
 
     def rotate_left(self):
         ''' Rotates the Rover left, given its current direction '''
@@ -139,7 +139,7 @@ class Position:
 
 class Plateau:
     ''' A Plateau object with x and y values specifying its size '''
-    
+
     def __init__(self, x, y):
         ''' Plateau object constructor
 
