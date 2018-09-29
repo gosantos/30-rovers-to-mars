@@ -1,10 +1,18 @@
+from enum import Enum, unique
 from .plateau import Plateau
 from .position import Position, Direction
 
 
+@unique
+class RoverCommand(Enum):
+    MOVE_FORWARD = 'm'
+    ROTATE_LEFT = 'l'
+    ROTATE_RIGHT = 'r'
+
+
 class Rover:
     ''' A Rover object able to rotate and move forward '''
-    
+
     def __init__(self, plateau, position):
         ''' Rover object constructor
 
@@ -30,9 +38,9 @@ class Rover:
         }
 
         self.__commands = {
-            'm': self.move_forward,
-            'l': self.rotate_left,
-            'r': self.rotate_right,
+            RoverCommand.MOVE_FORWARD: self.move_forward,
+            RoverCommand.ROTATE_LEFT: self.rotate_left,
+            RoverCommand.ROTATE_RIGHT: self.rotate_right,
         }
 
     def execute(self, command):
@@ -45,7 +53,7 @@ class Rover:
     def move_forward(self):
         ''' Moves the Rover forward, given its current
             position and direction
-        
+
         :raises: A RuntimeError in case of invalid direction value (no matches).
         :raises: A RuntimeError if the move is invalid.
         '''
@@ -69,7 +77,7 @@ class Rover:
 
         elif self._position.direction == Direction.WEST:
             new_position = Position(self._position.x - 1, self._position.y, self._position.direction)
-      
+
         if Rover.isValidPosition(self._plateau, new_position):
             self._position = new_position
             return self

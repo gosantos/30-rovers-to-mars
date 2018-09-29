@@ -1,5 +1,6 @@
 from .plateau import Plateau
 from .position import Position
+from .rover import RoverCommand
 
 
 class Parser:
@@ -28,4 +29,4 @@ class Parser:
 
         :returns: a list of lowercase characters
         '''
-        return [str.lower(command) for command in str_commands]
+        return [RoverCommand(str.lower(command)) for command in str_commands]
