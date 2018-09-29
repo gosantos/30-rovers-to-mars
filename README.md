@@ -25,6 +25,7 @@ Files structure:
 ### Execution
 
 The solution can be called via command line using: `python mars.py`
+
 Or you can pass a text file using: `python mars.py < yourInputFileHere.txt`
 
 ---
