@@ -8,8 +8,18 @@ class Plateau:
         :param y: the current position on the y coordinate (an integet)
         :returns: a Plateau object
         '''
+        assert(type(x) is int and x >= 0)
+        assert(type(y) is int and y >= 0)
+
         self.x = x
         self.y = y
+
+    def __eq__(self, other):
+        ''' Compares instance with another instance by attribute values 
+
+        :param other: the object to be compared to
+        :returns: a boolean specifying whether the other object is equal to this instance'''
+        return type(other) is Plateau and self.__dict__ == other.__dict__
 
     @staticmethod
     def from_string(str_plateau):
