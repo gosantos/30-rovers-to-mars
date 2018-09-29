@@ -14,7 +14,7 @@ class TestSolution(unittest.TestCase):
         expected values from the output text file...
         '''
         solution = []
-        with open('./tests/mock_input/00.txt', 'r') as mock_input_file:
+        with open('./tests/mocks/input/00.txt', 'r') as mock_input_file:
             mock_input = mock_input_file.read().split('\n')
             with patch('builtins.input', side_effect=mock_input):
                 for (plateau, rover_position, commands) in Parser.read_input():
@@ -28,6 +28,6 @@ class TestSolution(unittest.TestCase):
                                                        rover.position.direction.value)
                     solution.append(rover_solution)
         
-        with open('./tests/mock_output/00.txt', 'r') as mock_output_file:
+        with open('./tests/mocks/output/00.txt', 'r') as mock_output_file:
             mock_output = mock_output_file.read().split('\n')
             self.assertEqual(solution, mock_output)
