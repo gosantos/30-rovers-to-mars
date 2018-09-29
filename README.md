@@ -4,7 +4,7 @@ Solution to Mars Rovers problem from https://github.com/GetAmbush/code-challenge
 
 ---
 
-Files structure:
+File structure:
 - src
   - marsrovers (the package)
     - parser
