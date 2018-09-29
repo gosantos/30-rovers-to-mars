@@ -8,6 +8,6 @@ if __name__ == '__main__':
         for command in commands:
             rover.execute(command)
 
-        print(rover._position.x, 
-              rover._position.y,
-              rover._position.direction.value)
+        print(rover.position.x, 
+              rover.position.y,
+              rover.position.direction.value)
