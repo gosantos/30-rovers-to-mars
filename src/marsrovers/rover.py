@@ -21,7 +21,7 @@ class Rover:
         :returns: a Rover object
         '''
         self._plateau = plateau
-        self._position = position
+        self.position = position
 
         self.__left_rotations = {
             Direction.NORTH: Direction.WEST,
@@ -57,29 +57,29 @@ class Rover:
         :raises: A RuntimeError in case of invalid direction value (no matches).
         :raises: A RuntimeError if the move is invalid.
         '''
-        print('({}, {}) - moving forward...'.format(self._position.x, 
-                                                    self._position.y))
-        new_position = None
+        print('({}, {}) - moving forward...'.format(self.position.x, 
+                                                    self.position.y))
+        newposition = None
         # here is the alternative version to the dictionary approach
         # I think this is the better choice for this case
         # since using a dictionary would actually create 4 new Position objects
 
         # with if/else statements we have more clutter, 
         # but we only create 1 object
-        if self._position.direction == Direction.NORTH:
-            new_position = Position(self._position.x, self._position.y + 1, self._position.direction)
+        if self.position.direction == Direction.NORTH:
+            newposition = Position(self.position.x, self.position.y + 1, self.position.direction)
 
-        elif self._position.direction == Direction.SOUTH:
-            new_position = Position(self._position.x, self._position.y - 1, self._position.direction)
+        elif self.position.direction == Direction.SOUTH:
+            newposition = Position(self.position.x, self.position.y - 1, self.position.direction)
 
-        elif self._position.direction == Direction.EAST:
-            new_position = Position(self._position.x + 1, self._position.y, self._position.direction)   
+        elif self.position.direction == Direction.EAST:
+            newposition = Position(self.position.x + 1, self.position.y, self.position.direction)   
 
-        elif self._position.direction == Direction.WEST:
-            new_position = Position(self._position.x - 1, self._position.y, self._position.direction)
+        elif self.position.direction == Direction.WEST:
+            newposition = Position(self.position.x - 1, self.position.y, self.position.direction)
 
-        if Rover.isValidPosition(self._plateau, new_position):
-            self._position = new_position
+        if Rover.isValidPosition(self._plateau, newposition):
+            self.position = newposition
             return self
         else:
             raise RuntimeError('Invalid move:', command)
@@ -89,20 +89,20 @@ class Rover:
 
     def rotate_left(self):
         ''' Rotates the Rover left, given its current direction '''
-        print('({}, {}) - rotating left...'.format(self._position.x, 
-                                                   self._position.y))
+        print('({}, {}) - rotating left...'.format(self.position.x, 
+                                                   self.position.y))
         # instead of doing a huge if/else (since python doesn't offer switch statements)
         # we use a dictionary to match the current direction (key) to a new direction (value)
-        self._position.direction = self.__left_rotations[self._position.direction]
+        self.position.direction = self.__left_rotations[self.position.direction]
         return self
 
     def rotate_right(self):
         ''' Rotates the Rover right, given its current direction '''
-        print('({}, {}) - rotating right...'.format(self._position.x, 
-                                                    self._position.y))
+        print('({}, {}) - rotating right...'.format(self.position.x, 
+                                                    self.position.y))
         # instead of doing a huge if/else (since python doesn't offer switch statements)
         # we use a dictionary to match the current direction (key) to a new direction (value)
-        self._position.direction = self.__right_rotations[self._position.direction]
+        self.position.direction = self.__right_rotations[self.position.direction]
         return self
 
     @staticmethod
