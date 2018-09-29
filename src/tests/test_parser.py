@@ -1,5 +1,5 @@
 import unittest
-from marsrovers import parser
+from marsrovers.parser import Parser
 
 class TestParser(unittest.TestCase):
   def testMyParser(self):

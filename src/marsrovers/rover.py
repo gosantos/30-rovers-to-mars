@@ -1,5 +1,5 @@
-from . import plateau
-from . import position
+from .plateau import Plateau
+from .position import Position, Direction
 
 
 class Rover:
@@ -16,17 +16,17 @@ class Rover:
         self._position = position
 
         self.__left_rotations = {
-            'n': 'w',
-            'w': 's',
-            's': 'e',
-            'e': 'n',
+            Direction.NORTH: Direction.WEST,
+            Direction.WEST: Direction.SOUTH,
+            Direction.SOUTH: Direction.EAST,
+            Direction.EAST: Direction.NORTH,
         }
 
         self.__right_rotations = {
-            'n': 'e',
-            'w': 'n',
-            's': 'w',
-            'e': 's',
+            Direction.NORTH: Direction.EAST,
+            Direction.EAST: Direction.SOUTH,
+            Direction.SOUTH: Direction.WEST,
+            Direction.WEST: Direction.NORTH,
         }
 
         self.__commands = {
@@ -51,23 +51,23 @@ class Rover:
         '''
         print('({}, {}) - moving forward...'.format(self._position.x, 
                                                     self._position.y))
-
+        new_position = None
         # here is the alternative version to the dictionary approach
         # I think this is the better choice for this case
         # since using a dictionary would actually create 4 new Position objects
 
         # with if/else statements we have more clutter, 
         # but we only create 1 object
-        if self._position.direction == 'n':
+        if self._position.direction == Direction.NORTH:
             new_position = Position(self._position.x, self._position.y + 1, self._position.direction)
 
-        elif self._position.direction == 's':
+        elif self._position.direction == Direction.SOUTH:
             new_position = Position(self._position.x, self._position.y - 1, self._position.direction)
 
-        elif self._position.direction == 'e':
+        elif self._position.direction == Direction.EAST:
             new_position = Position(self._position.x + 1, self._position.y, self._position.direction)   
 
-        elif self._position.direction == 'w':
+        elif self._position.direction == Direction.WEST:
             new_position = Position(self._position.x - 1, self._position.y, self._position.direction)
       
         if Rover.isValidPosition(self._plateau, new_position):

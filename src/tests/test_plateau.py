@@ -1,5 +1,5 @@
 import unittest
-from marsrovers import plateau
+from marsrovers.plateau import Plateau
 
 class TestPlateau(unittest.TestCase):
   def testMyPlateau(self):

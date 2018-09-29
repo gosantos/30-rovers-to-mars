@@ -1,5 +1,5 @@
 import unittest
-from marsrovers import rover
+from marsrovers.rover import Rover
 
 class TestRover(unittest.TestCase):
   def testMyRover(self):

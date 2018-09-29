@@ -1,5 +1,5 @@
-from . import plateau
-from . import position
+from .plateau import Plateau
+from .position import Position
 
 
 class Parser:

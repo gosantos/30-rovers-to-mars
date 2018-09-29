@@ -1,6 +1,5 @@
-from Rover import Rover
-from Parser import Parser
-
+from marsrovers.rover import Rover
+from marsrovers.parser import Parser
 
 if __name__ == '__main__':
     for (plateau, rover_position, commands) in Parser.read_input():
@@ -8,4 +7,7 @@ if __name__ == '__main__':
         rover = Rover(plateau, rover_position)
         for command in commands:
             rover.execute(command)
-        print(rover._position.x, rover._position.y, rover._position.direction)
+
+        print(rover._position.x, 
+              rover._position.y,
+              rover._position.direction.value)
