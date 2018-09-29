@@ -7,12 +7,12 @@ from marsrovers.parser import Parser
 
 class TestSolution(unittest.TestCase):
     def test_solution(self):
-      ''' This one is a beauty (altough too complex for a unit test):
+        ''' This one is a beauty (altough too complex for a unit test):
 
-      We mock the builtin input method using a text file
-      and in the end, we compare one or more results with the
-      expected values from the output text file...
-      '''
+        We mock the builtin input method using a text file
+        and in the end, we compare one or more results with the
+        expected values from the output text file...
+        '''
         solution = []
         with open('./tests/mock_input/00.txt', 'r') as mock_input_file:
             mock_input = mock_input_file.read().split('\n')

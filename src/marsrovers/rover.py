@@ -59,7 +59,7 @@ class Rover:
         '''
         print('({}, {}) - moving forward...'.format(self.position.x, 
                                                     self.position.y))
-        newposition = None
+        new_position = None
         # here is the alternative version to the dictionary approach
         # I think this is the better choice for this case
         # since using a dictionary would actually create 4 new Position objects
@@ -67,19 +67,19 @@ class Rover:
         # with if/else statements we have more clutter, 
         # but we only create 1 object
         if self.position.direction == Direction.NORTH:
-            newposition = Position(self.position.x, self.position.y + 1, self.position.direction)
+            new_position = Position(self.position.x, self.position.y + 1, self.position.direction)
 
         elif self.position.direction == Direction.SOUTH:
-            newposition = Position(self.position.x, self.position.y - 1, self.position.direction)
+            new_position = Position(self.position.x, self.position.y - 1, self.position.direction)
 
         elif self.position.direction == Direction.EAST:
-            newposition = Position(self.position.x + 1, self.position.y, self.position.direction)   
+            new_position = Position(self.position.x + 1, self.position.y, self.position.direction)   
 
         elif self.position.direction == Direction.WEST:
-            newposition = Position(self.position.x - 1, self.position.y, self.position.direction)
+            new_position = Position(self.position.x - 1, self.position.y, self.position.direction)
 
-        if Rover.isValidPosition(self._plateau, newposition):
-            self.position = newposition
+        if Rover.isValidPosition(self._plateau, new_position):
+            self.position = new_position
             return self
         else:
             raise RuntimeError('Invalid move:', command)
