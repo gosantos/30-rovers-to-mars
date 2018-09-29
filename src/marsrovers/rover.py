@@ -20,6 +20,9 @@ class Rover:
         :param position: a Position object
         :returns: a Rover object
         '''
+        assert(type(plateau) is Plateau)
+        assert(type(position) is Position)
+
         self._plateau = plateau
         self.position = position
 
