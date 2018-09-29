@@ -1,3 +1,6 @@
+from .position import Position
+
+
 class Plateau:
     ''' A Plateau object with x and y values specifying its size '''
 
@@ -31,3 +34,17 @@ class Plateau:
         x, y = str_plateau.split(' ')
         x, y = int(x), int(y)
         return Plateau(x, y)
+    
+    def isValidPosition(self, position):
+        ''' Checks whether the a position is valid or not, given the size of the plateau 
+
+        :param plateau: a Plateau object
+        :param position: a Position object
+        :returns: a boolean that specifies whether the position is valid or not
+        '''
+        if position.x < 0 or position.x > self.x:
+            return False
+        if position.y < 0 or position.y > self.y:
+            return False
+
+        return True

@@ -78,7 +78,7 @@ class Rover:
         elif self.position.direction == Direction.WEST:
             new_position = Position(self.position.x - 1, self.position.y, self.position.direction)
 
-        if Rover.isValidPosition(self._plateau, new_position):
+        if self._plateau.isValidPosition(new_position):
             self.position = new_position
             return self
         else:
@@ -105,17 +105,4 @@ class Rover:
         self.position.direction = self.__right_rotations[self.position.direction]
         return self
 
-    @staticmethod
-    def isValidPosition(plateau, position):
-        ''' Checks whether the a position is valid or not, given the size of the plateau 
-
-        :param plateau: a Plateau object
-        :param position: a Position object
-        :returns: a boolean that specifies whether the position is valid or not
-        '''
-        if position.x < 0 or position.x > plateau.x:
-            return False
-        if position.y < 0 or position.y > plateau.y:
-            return False
-
-        return True
+    
