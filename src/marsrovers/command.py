@@ -1,5 +1,5 @@
-from .position import Position
-from .enums.directions import Commands
+from src.marsrovers.models.position import Position
+from .enums.commands import Commands, Directions
 
 
 class Command:
@@ -12,7 +12,7 @@ class Command:
 
 class NorthCommand(Command):
     def match(self, command):
-        return command == Commands.NORTH
+        return command == Directions.NORTH
 
     def move(self, position):
         return Position(position.x, position.y + 1, position.direction)
@@ -20,15 +20,15 @@ class NorthCommand(Command):
 
 class SouthCommand(Command):
     def match(self, command):
-        return command == Commands.SOUTH
+        return command == Directions.SOUTH
 
     def move(self, position):
-        return Position(position.x + 1, position.y, position.direction)
+        return Position(position.x - 1, position.y, position.direction)
 
 
 class EastCommand(Command):
     def match(self, command):
-        return command == Commands.EAST
+        return command == Directions.EAST
 
     def move(self, position):
         return Position(position.x + 1, position.y, position.direction)
@@ -36,7 +36,7 @@ class EastCommand(Command):
 
 class WestCommand(Command):
     def match(self, command):
-        return command == Commands.WEST
+        return command == Directions.WEST
 
     def move(self, position):
         return Position(position.x - 1, position.y, position.direction)
@@ -48,10 +48,10 @@ class RotateRightCommand(Command):
 
     def move(self, position):
         right_rotations = {
-            Commands.NORTH: Commands.EAST,
-            Commands.EAST: Commands.SOUTH,
-            Commands.SOUTH: Commands.WEST,
-            Commands.WEST: Commands.NORTH,
+            Directions.NORTH: Directions.EAST,
+            Directions.EAST: Directions.SOUTH,
+            Directions.SOUTH: Directions.WEST,
+            Directions.WEST: Directions.NORTH,
         }
 
         return Position(position.x, position.y, right_rotations[position.direction])
@@ -63,10 +63,10 @@ class RotateLeftCommand(Command):
 
     def move(self, position):
         left_rotations = {
-            Commands.NORTH: Commands.WEST,
-            Commands.WEST: Commands.SOUTH,
-            Commands.SOUTH: Commands.EAST,
-            Commands.EAST: Commands.NORTH,
+            Directions.NORTH: Directions.WEST,
+            Directions.WEST: Directions.SOUTH,
+            Directions.SOUTH: Directions.EAST,
+            Directions.EAST: Directions.NORTH,
         }
 
         return Position(position.x, position.y, left_rotations[position.direction])

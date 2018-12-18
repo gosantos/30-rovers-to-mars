@@ -1,10 +1,8 @@
 from enum import Enum
 
 
-class Commands(Enum):
-    NORTH = 'n'
-    WEST = 'w'
-    SOUTH = 's'
-    EAST = 'e'
-    RIGHT = 'r'
-    LEFT = 'l'
+class Directions(Enum):
+    NORTH = 'N'
+    WEST = 'W'
+    SOUTH = 'S'
+    EAST = 'E'

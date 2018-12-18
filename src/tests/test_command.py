@@ -1,7 +1,7 @@
 from unittest import TestCase
 from ..marsrovers.command import NorthCommand, RotateRightCommand
-from ..marsrovers.enums.directions import Commands
-from ..marsrovers.position import Position
+from ..marsrovers.enums.commands import Commands
+from src.marsrovers.models.position import Position
 
 
 class TestCommand(TestCase):
