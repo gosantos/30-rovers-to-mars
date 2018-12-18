@@ -24,6 +24,8 @@ File structure:
 ---
 ### Execution
 
+Python 3.6.7
+
 The solution can be called via command line using: `python mars.py`
 
 Or you can pass a text file using: `python mars.py < yourInputFileHere.txt`
@@ -42,3 +44,4 @@ To run the unit tests:
 Things are pretty straightforward and (I believe) well documented.
 
 *Still, in case of any questions regarding the code and how to execute it, just send me a message.*
+
